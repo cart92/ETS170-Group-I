@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{enumitem}%can be used for automatic numbering of requirements.
+
+\newlength{\testlabellength}
+\settowidth{\testlabellength}{Test 100.10.10}
+\newenvironment{testlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
+
+\date{} % delete this line to display the current date
+
+% Begin document.
+\begin{document}
+
+%==================================
+% Försättsblad. 
+\begin{titlepage}
+
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft} % Responsible persons, write on separate lines
+\textit{Lunds University\\ ETS170: Requirements Engineering}\\
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+\today
+
+\end{flushright}
+\end{minipage}\\[3cm]
+
+	\centering
+	%{\scshape\LARGE Lunds University \par}
+	\vspace{0.5cm}
+	%{\scshape\Large Requirements Engineering\par}
+	\vspace{1.5cm}
+	\rule{1\textwidth}{.6pt} \par
+	{\huge\bfseries Requirements Specification\par}
+	\rule{1\textwidth}{.6pt} \par
+	\vspace{2cm}
+%	{\Large\itshape }
+
+%==================================
+% The authors down to the left. 
+\vfill
+\begin{flushleft}
+\textit{Authors of this document:}\\
+Marie\par Gunilla\par Karin\par Christina\par
+\end{flushleft}
+\end{titlepage}
+
+
+%\tableofcontents
+\newpage
+\begin{center}
+
+%==================================
+% The version history of this document. 
+\textit{\large Version History}
+
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    \textbf{Version}	& \textbf{Date}		& \textbf{Responsible}		& \textbf{Description}				\\ \hline
+    0.1			& 2015-11-18 		& DD					& Don't know					\\ \hline
+   % 1.1			& 2015-09-25		& Someone				& Add text 				\\ \hline
+    \end{tabular}
+\end{center}
+
+
+%==================================
+% Definitions.
+
+
+\section{Terminology}
+\begin{description}
+\item[RCR] Retarded Customer Requirements
+\item[YGTC] You Get The Concept
+\end{description}
+
+
+%==================================
+% Requirements Specification.
+\section{Functional Requirements Specification}
+Here we list the function requirements. 
+
+\begin{testlist}
+	\item The app should work.
+	\item The app should be waterproof (legit req.)
+	\item The app should support russian users.
+\end{testlist}
+
+\end{document}
