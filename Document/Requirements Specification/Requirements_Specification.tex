@@ -9,7 +9,7 @@
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
-\newenvironment{testlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
+\newenvironment{reqlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=1.8cm]}{\end{enumerate}}
 
 \date{} % delete this line to display the current date
 
@@ -48,13 +48,18 @@
 % The authors down to the left. 
 \vfill
 \begin{flushleft}
-\textit{Authors of this document:}\\
-Marie\par Gunilla\par Karin\par Christina\par
-\end{flushleft}
+	\textit{Authors of this document:}\\
+	Jonathan Lundholm\par 
+	Daniel Dornl\"{o}v\par 
+	Marcus Hilliges\par 
+	Thomas Strahl\par
+	David Cartbo\par
+	Kristoffer Hilmersson\par
+	\end{flushleft}
 \end{titlepage}
+\newpage
 
-
-%\tableofcontents
+\tableofcontents
 \newpage
 \begin{center}
 
@@ -64,33 +69,66 @@ Marie\par Gunilla\par Karin\par Christina\par
 
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
-    \textbf{Version}	& \textbf{Date}		& \textbf{Responsible}		& \textbf{Description}				\\ \hline
-    0.1			& 2015-11-18 		& DD					& Don't know					\\ \hline
-   % 1.1			& 2015-09-25		& Someone				& Add text 				\\ \hline
+    \textbf{Version}	& \textbf{Date}		& \textbf{Description}			\\ \hline
+    0.1			& 2015-11-22 			& First release			\\ \hline
+   % 0.2			& 2nd deadline			& Fix/new release 			\\ \hline
     \end{tabular}
 \end{center}
 
+%==================================
+% Buisness Goals
+\section{Buisness Goals}
+The application that is to be developed is supposed to increase the shopping malls customer satisfaction, the number of visiting customer and increase the number of sales the stores in the mall has.\\\\
+
+\textit{"To earn cash" - David Cartbo.}
 
 %==================================
 % Definitions.
 
-
 \section{Terminology}
-\begin{description}
-\item[RCR] Retarded Customer Requirements
-\item[YGTC] You Get The Concept
+	\begin{description}
+	\item[The app] is referring to the ordered application gör a shopping mall, i.e. the ordered product.
+	\item[The user] is referring to the person using the application on their device.
+	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and smart-watch.
 \end{description}
 
 
 %==================================
-% Requirements Specification.
-\section{Functional Requirements Specification}
+% This is where the requirements start.
+%==================================
+
+
+%==================================
+% Data requirements.
+
+\section{Data Requirements}
+This is where we specify the data requirements.
+
+\begin{reqlist}
+	\item The app should contain user information, e.g., favorite color etc.
+	\item The app should be able to store bullshit data.
+\end{reqlist}
+
+%==================================
+% Functional requirements.
+
+\section{Functional Requirements}
 Here we list the function requirements. 
 
-\begin{testlist}
+\begin{reqlist}
 	\item The app should work.
 	\item The app should be waterproof (legit req.)
 	\item The app should support russian users.
-\end{testlist}
+\end{reqlist}
+
+%==================================
+% Design requirements.
+
+\section{Design Requirements}
+Here we list the design requirements, regarding the graphical user interface. 
+
+\begin{reqlist}
+	\item Yo
+\end{reqlist}
 
 \end{document}
