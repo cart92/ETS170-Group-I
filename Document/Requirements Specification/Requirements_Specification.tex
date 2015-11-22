@@ -9,7 +9,10 @@
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
-\newenvironment{reqlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=1.8cm]}{\end{enumerate}}
+% Use this when you don't have a subsection in the listed requirements.
+\newenvironment{reqlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=3cm]}{\end{enumerate}}
+% Use this when you have a subsection in the listed requirements.
+\newenvironment{reqsublist}{\begin{enumerate}[label=\bfseries Req \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=3cm]}{\end{enumerate}}
 
 \date{} % delete this line to display the current date
 
@@ -22,7 +25,7 @@
 
 \begin{minipage}{0.5\textwidth}
 \begin{flushleft} % Responsible persons, write on separate lines
-\textit{Lunds University\\ ETS170: Requirements Engineering}\\
+\textit{Lund University\\ ETS170: Requirements Engineering}\\
 \end{flushleft}
 \end{minipage}
 ~
@@ -49,12 +52,12 @@
 \vfill
 \begin{flushleft}
 	\textit{Authors of this document:}\\
-	Jonathan Lundholm\par 
 	Daniel Dornl\"{o}v\par 
+	David Cartbo\par
+	Jonathan Lundholm\par 
+	Kristoffer Hilmersson\par
 	Marcus Hilliges\par 
 	Thomas Strahl\par
-	David Cartbo\par
-	Kristoffer Hilmersson\par
 	\end{flushleft}
 \end{titlepage}
 \newpage
@@ -80,14 +83,13 @@
 \section{Buisness Goals}
 The application that is to be developed is supposed to increase the shopping malls customer satisfaction, the number of visiting customer and increase the number of sales the stores in the mall has.\\\\
 
-\textit{"To earn cash" - David Cartbo.}
 
 %==================================
 % Definitions.
 
 \section{Terminology}
 	\begin{description}
-	\item[The app] is referring to the ordered application gör a shopping mall, i.e. the ordered product.
+	\item[The app] is referring to the ordered application for a shopping mall, i.e. the ordered product.
 	\item[The user] is referring to the person using the application on their device.
 	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and smart-watch.
 \end{description}
@@ -104,10 +106,14 @@ The application that is to be developed is supposed to increase the shopping mal
 \section{Data Requirements}
 This is where we specify the data requirements.
 
-\begin{reqlist}
-	\item The app should contain user information, e.g., favorite color etc.
-	\item The app should be able to store bullshit data.
-\end{reqlist}
+\subsection{Database}
+
+\begin{reqsublist}
+	\item The app shall support registration of store offers from different stores.
+	\item The database shall contain the products sold in the shopping mall, and provide information which store that sells them.
+	\item The app shall have data provided by the stores on stock balance, prices and offers on the products offered by the stores.
+	\item The app shall have a database to store general information about the stores. 
+\end{reqsublist}
 
 %==================================
 % Functional requirements.
@@ -115,11 +121,46 @@ This is where we specify the data requirements.
 \section{Functional Requirements}
 Here we list the function requirements. 
 
-\begin{reqlist}
-	\item The app should work.
-	\item The app should be waterproof (legit req.)
-	\item The app should support russian users.
-\end{reqlist}
+\subsection{Navigation}
+\begin{reqsublist}
+	\item The app shall have a function for locating the user in the shopping mall.
+	\item The app shall be able to assist the user to get from point a to point b in the shopping mall.
+	\item The app shall provide public information, such as location of handicap toilets, elevators, ATM machines, etc.
+	\item The app shall work without being connected to the internet, to limit data traffic.
+\end{reqsublist}
+
+\subsection{Smart-Watch}
+\begin{reqsublist}
+	\item The app shall support connecting a smart-watch to it.
+	\item The app shall support navigation on the smart-watch screen.
+	\item The app shall support helping the user find where they parked their car.
+	\item The app shall support store offers in a smart-watch.
+	\item The app shall work without a smart-watch. (Not all customers have a smart-watch)
+\end{reqsublist}
+
+\subsection{Offers}
+\begin{reqsublist}
+	\item The app shall display offers from stores close to the user without covering the user device screen.
+	\item The app shall display a new offer if the user is within x range to a store and has not been shown another offer in y time.
+	\item The app shall display specific offers designed by the stores if the user enters their stores.
+	\item The app may not show a new offer more than every z seconds/minutes.
+\end{reqsublist}
+
+\subsection{Parking}
+\begin{reqsublist}
+	\item The app shall provide a function to register where the user's vehicle is parked. 
+	\item The user shall be able to register the location of the parked vehicle.
+	\item The app shall be able to guide the user to their parked vehicle.
+	\item The app shall have the function for displaying what parking places are free and assist the user to locate the free parking places.
+\end{reqsublist}
+
+\subsection{Additional Functionality}
+\begin{reqsublist}
+	\item The app shall support information about departures using public transportation.
+	\item The user shall be able to create a shopping list. The products shall be searched for by type and display what store has that type of product so the user can select what store and product he or she wants to add to the shopping list.
+	\item The app shall have a rating system for stores in the mall that user can use to rate stores.
+	\item The app shall be implemented for Android devices and iOS devices.
+\end{reqsublist}
 
 %==================================
 % Design requirements.
@@ -128,7 +169,21 @@ Here we list the function requirements.
 Here we list the design requirements, regarding the graphical user interface. 
 
 \begin{reqlist}
-	\item Yo
+	\item The app shall provide the screen shown in figure xx to help the user navigate.
+\end{reqlist}
+
+%==================================
+% Quality requirements.
+
+\section{Quality Requirements}
+Here we list the quality requirements.
+
+\begin{reqlist}
+	\item The app should be easy to understand and not confusing.
+	\item The app shall not be annoying to use or clutter the screen with offers.
+	\item The app shall connect to the server with in 5 seconds after starting the app so the user does not have to wait too long before the app is synced with the server.
+	\item The server shall have at least 99\% up-time.
+
 \end{reqlist}
 
 \end{document}
