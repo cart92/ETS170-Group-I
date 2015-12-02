@@ -1,4 +1,4 @@
-#ignore everything 
+# ignore everythin
 *
 
 # But not these files…
@@ -6,6 +6,8 @@
 !README.md
 !*.tex
 !*.png
+!*.svg
+!*.scala
 
 #… even if they’re in subdirectories
 !*/
