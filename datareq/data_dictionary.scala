@@ -22,7 +22,7 @@ var m = Model(
     Class("Store") has (
         Spec("A physical store in the mall"),
         Example("(1) A store selling clothing. (2) A store selling services. (3) A store selling food (restaurant)."), 
-        Member("storeName") has (
+        Member("name") has (
             Spec("Text attribute, 50 chars. The name of the store. ")),
         Member("offers") has (
             Spec("A list containing offer-id, where each offer-id is a text attribute, 50 chars.")), 
@@ -39,7 +39,7 @@ var m = Model(
     Class("Product") has (
         Spec("In relation with store. A store has products."),
         Example("(1) Clothes, for example a t-shirt. (2) A hardware item, like a screwdriver."),
-        Member("productName") has (
+        Member("name") has (
             Spec("Text attribute, 50 chars. The name of the product.")), 
         Member("price") has (
             Spec("Integer attribute. In Swedish kronors")), 

@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Untitled Model</title>
+<link rel="stylesheet" type="text/css" href="reqT-style.css">
+</head>
+  <body>
+
+
+
+  <ul>
+</ul>
+
+
+<h2>Contents</h2>
+<ul>
+  <li><a href="#relations">relations</a></li>
+  
+</ul>
+      
+
+       <h2><a id="relations">relations</a></h2>
+       
+       
+      <ul>
+      <li><span class="entityColor">Class</span> User <span class="relationColor">relatesTo</span></li>
+
+        <ul>
+        <li><span class="entityColor">Class</span> Visit <span class="relationColor">has</span></li>
+
+          <ul>
+          <li><span class="attributeColor">Min</span>: 1</li></ul>
+</ul>
+
+            <li><span class="entityColor">Class</span> Visit <span class="relationColor">relatesTo</span></li>
+
+        <ul>
+        <li><span class="entityColor">Class</span> Store <span class="relationColor">relatesTo</span></li>
+
+          <ul>
+          <li><span class="entityColor">Class</span> Visit <span class="relationColor">has</span></li>
+
+            <ul>
+            <li><span class="attributeColor">Min</span>: 1</li></ul>
+
+                    <li><span class="entityColor">Class</span> Product <span class="relationColor">has</span></li>
+
+            <ul>
+            <li><span class="attributeColor">Min</span>: 1</li></ul>
+</ul>
+</ul>
+
+            <li><span class="entityColor">Section</span> attributes <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="entityColor">Class</span> User <span class="relationColor">has</span></li>
+
+          <ul>
+          <li><span class="entityColor">Member</span> shoppinglist</li>
+                    <li><span class="entityColor">Member</span> user-position</li>
+                    <li><span class="entityColor">Member</span> car-position</li></ul>
+
+                <li><span class="entityColor">Class</span> Visit <span class="relationColor">has</span></li>
+
+          <ul>
+          <li><span class="entityColor">Member</span> stayId</li>
+                    <li><span class="entityColor">Member</span> date</li></ul>
+
+                <li><span class="entityColor">Class</span> Store <span class="relationColor">has</span></li>
+
+          <ul>
+          <li><span class="entityColor">Member</span> name</li>
+                    <li><span class="entityColor">Member</span> offers</li>
+                    <li><span class="entityColor">Member</span> position</li>
+                    <li><span class="entityColor">Member</span> rating</li></ul>
+
+                <li><span class="entityColor">Class</span> Product <span class="relationColor">has</span></li>
+
+          <ul>
+          <li><span class="entityColor">Member</span> name</li>
+                    <li><span class="entityColor">Member</span> price</li>
+                    <li><span class="entityColor">Member</span> stockBalance</li></ul>
+</ul>
+</ul>
+
+      
+
+  
+</body>
+</html>

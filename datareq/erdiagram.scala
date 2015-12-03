@@ -15,12 +15,12 @@ var m = Model(
                     Member("stayId"),  
                     Member("date")
             ), Class("Store") has (
-                    Member("storeName"),
+                    Member("name"),
                     Member("offers"), 
                     Member("position"),  
                     Member("rating")
             ), Class("Product") has (
-                    Member("productName"), 
+                    Member("name"), 
                     Member("price"), 
                     Member("stockBalance")
             )
