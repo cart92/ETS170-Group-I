@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Untitled Model</title>
+<link rel="stylesheet" type="text/css" href="reqT-style.css">
+</head>
+  <body>
+
+
+
+  <ul>
+  <li><span class="entityColor">Class</span> User <span class="relationColor">has</span></li>
+
+    <ul>
+    <li><span class="attributeColor">Spec</span>: The user is a person that visits the mall and uses the product shopMate.</li>
+        <li><span class="attributeColor">Example</span>: (1) An user visiting the mall looking for clothes. (2) An user looking for their parked car. (3) An user that wants to fika</li>
+        <li><span class="entityColor">Member</span> shoppinglist <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: A list containing items, where each item is a text attribute, 50 chars. </li></ul>
+
+        <li><span class="entityColor">Member</span> user-position <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: The 'user-position' is the current position of the user in the mall.</li>
+            <li><span class="entityColor">Member</span> level <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Integer. The current level the user is on. Obtained using beacons.</li></ul>
+
+            <li><span class="entityColor">Member</span> coordinate <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Two doubles. Longitude and latitude.</li></ul>
+</ul>
+
+        <li><span class="entityColor">Member</span> car-position <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: The 'car-position' is the position of the parked car.</li>
+            <li><span class="entityColor">Member</span> level <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Integer. The current level the car is on. Obtained using beacons.</li></ul>
+
+            <li><span class="entityColor">Member</span> coordinate <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Two doubles. Longitude and latitude.</li></ul>
+</ul>
+</ul>
+
+    <li><span class="entityColor">Class</span> Store <span class="relationColor">has</span></li>
+
+    <ul>
+    <li><span class="attributeColor">Spec</span>: A physical store in the mall</li>
+        <li><span class="attributeColor">Example</span>: (1) A store selling clothing. (2) A store selling services. (3) A store selling food (restaurant).</li>
+        <li><span class="entityColor">Member</span> storeName <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: Text attribute, 50 chars. The name of the store. </li></ul>
+
+        <li><span class="entityColor">Member</span> offers <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: A list containing offer-id, where each offer-id is a text attribute, 50 chars.</li></ul>
+
+        <li><span class="entityColor">Member</span> position <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: The 'position' is the position of the entrance to the store.</li>
+            <li><span class="entityColor">Member</span> level <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Integer attribute. The current level the store is on. Obtained using beacons.</li></ul>
+
+            <li><span class="entityColor">Member</span> coordinate <span class="relationColor">has</span></li>
+
+        <ul>
+        <li><span class="attributeColor">Spec</span>: Two double attributes. Longitude and latitude.</li></ul>
+</ul>
+
+        <li><span class="entityColor">Member</span> rating <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: Double. Store rating ranging from 0 - 5.</li></ul>
+</ul>
+
+    <li><span class="entityColor">Class</span> Product <span class="relationColor">has</span></li>
+
+    <ul>
+    <li><span class="attributeColor">Spec</span>: In relation with store. A store has products.</li>
+        <li><span class="attributeColor">Example</span>: (1) Clothes, for example a t-shirt. (2) A hardware item, like a screwdriver.</li>
+        <li><span class="entityColor">Member</span> productName <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: Text attribute, 50 chars. The name of the product.</li></ul>
+
+        <li><span class="entityColor">Member</span> price <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: Integer attribute. In Swedish kronors</li></ul>
+
+        <li><span class="entityColor">Member</span> stockBalance <span class="relationColor">has</span></li>
+
+      <ul>
+      <li><span class="attributeColor">Spec</span>: Integer attribute. Number of items in stock.</li></ul>
+</ul>
+</ul>
+
+
+
+
+  
+</body>
+</html>

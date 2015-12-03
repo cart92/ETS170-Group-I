@@ -8,6 +8,7 @@
 !*.png
 !*.svg
 !*.scala
-
+!*.html
+!*.css
 #… even if they’re in subdirectories
 !*/
