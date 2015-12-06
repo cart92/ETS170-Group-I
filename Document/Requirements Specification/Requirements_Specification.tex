@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. Theres lots.
 \geometry{a4paper} % or letter or a5paper or ... etc
 % \geometry{landscape} % rotated page geometry
 
@@ -10,10 +10,6 @@
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
-% Use this when you don't have a subsection in the listed requirements.
-\newenvironment{reqlist}{\begin{enumerate}[label=\bfseries Req \thesection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=3cm]}{\end{enumerate}}
-% Use this when you have a subsection in the listed requirements.
-\newenvironment{reqsublist}{\begin{enumerate}[label=\bfseries Req \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=3cm]}{\end{enumerate}}
 
 \date{} % delete this line to display the current date
 
@@ -60,9 +56,7 @@
 	Thomas Strahl\par
 	\end{flushleft}
 \end{titlepage}
-\newpage
 
-\tableofcontents
 \newpage
 \begin{center}
 
@@ -81,11 +75,17 @@
 %==================================
 % Introduction
 \section*{Introduction}
-
+This document describes the functional, data, quality and design requirements for an iOS and Android based application that 
+communicates with a server and Smart-Watches. The product aims to assist the user in navigating the mall and to the users parked car, 
+get an overview of the layout of the mall,  keep track of what errands the user has in the mall and display offers from stores in the mall. 
 
 %==================================
 % Business Goals
 \subsection*{Business Goals}
+
+The purpose of the product is the enhance the quality of a customer visit by offering some features that facilitates the stay. 
+With the provided functionality of the product, the customer satisfaction will increase, as well as the number of visiting customer and the 
+number of sales the stores. This will enable the mall owner to charge the stores higher rents and a higher revenue for the stores in the mall.
 
 %==================================
 % Business Goals
@@ -96,14 +96,13 @@
 	\item[The app] is referring to the ordered application for a shopping mall, i.e. the ordered product.
 	\item[The user] is referring to the person using the application on their device.
 	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and smart-watch.
-	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the user's screen of their devices.
+	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the users screen of their devices.
 	\item [The server/database] is where all data about stores, offers, store-products, maps and so on are stored.
 	\item [Store] refers to companies located in the mall. 
 	\item [Store-Product] refers to items/products being sold in the stores, not the product that is being developed.
 	\item [Location] refers to the location of a user or a store in the shopping mall. 
 	\item [Shopping list] refers to a list with items or store-products that the user has added to a list and intends to buy while at the mall.
 \end{description}
-\newpage
 
 \subsection*{Context Diagram}
 ShopMate has an excessive inner domain, communicating with various other systems. In order to fulfill some of the fundamental requirements, this is necessary. Figur 1 below represents the domain level of ShopMate, displaying the systems needed to provide the desired functionality. 
@@ -124,33 +123,36 @@ ShopMate has an excessive inner domain, communicating with various other systems
 %==================================
 % Goal Level. 
 \subsection*{Goal Level}
+The goal level requirements comprises of goals for both the customers and the owners of the shopping mall. \\
 
-% \underline{Business --- ID} \\ Description. \\ \par % Mall
 \underline{Business --- Customer satisfaction} \\ The product shall increase the shopping malls customer satisfaction.\\ \par
 
-\underline{Business --- Mall revenue} \\ The product shall increase the mall?s revenue by 4 \%.\\ \par
+\underline{Business --- Mall revenue} \\ The product shall increase the malls revenue by 4 \%.\\ \par
 
 \underline{Business --- More customers} \\ The product shall help increase the number of visiting customers to the mall by 8 \%.\\ \par
 
 \underline{Business --- Increased sales} \\ The product shall help increase the number of sales the stores have by 3 \%. \\ \par
 
-\underline{Business --- Impulse sales} \\ The product shall increase the number of impulse buys of store-products by 10 \%. \\ \par 
+\underline{Business --- Impulse sales} \\ The product shall increase the number of impulse buys of store-products by 10 \%.
 
 %==================================
 % Requirements on Domain Level. 
 \subsection*{Domain Level}
 
-% \underline{ --- } \\ Description. \\ \par % Mall
+The domain level concerns the surroundings of the system and how the system interacts with it. \\
+
+ \underline{Data --- Attributes} \\ The product shall store data according to figure \ref{fig:er} and figure \ref{fig:user}.  \\ \par
 
  \underline{Data --- Product} \\ The product shall have data provided by the stores on stock balance, prices and offers on store-products provided by the stores.\\ \par
  
- \underline{Data --- Registration} \\ The product shall support registration of store offers from different stores. \\ \par
+ \underline{Data --- Registration} \\ The product shall support registration of store offers from different stores as shown in figure \ref{fig:store} and 
+ be able to show products like figure \ref{fig:product}. \\ \par
 
-\underline{Navigation --- Find location} \\ The product shall be able to assist the user to get from it?s current location to a specified location by the user in the mall. e.g. a store, toilet, elevator and so on. \\ \par
+\underline{Navigation --- Find location} \\ The product shall be able to assist the user to get from its current location to a specified location by the user in the mall. e.g. a store, toilet, elevator and so on. \\ \par
 
 \underline{Misc --- No connection} \\ The product shall work without being connected to the internet, to limit data traffic. Without internet connection the product will help the user navigate in the mall and navigate to their parked car. \\ \par
 
-\underline{Navigation --- Public information} \\ The product shall provide public information, such as location of handicap toilets, elevators, ATM machines, etc. With this information the user shall be able to navigate to the correct position in the mall.\\ \par
+\underline{Navigation --- Public information} \\ The product shall provide public information, such as location of handicap toilets, elevators, ATM machines, etc. With this information the user shall be able to navigate to the correct position in the mall.
 
 
 
@@ -160,9 +162,6 @@ ShopMate has an excessive inner domain, communicating with various other systems
 \underline{Parking --- Register parked car} \\ The user shall be able to register the location of the parked vehicle. \\ \par 
 
 \underline{Parking --- Guide to parked car} \\ The product shall be able to guide the user to their parked vehicle. 
-
-\subsubsection*{Offers}
-
 
 
 %==================================
@@ -207,30 +206,27 @@ type and display what store has that type of store-product so the user can selec
 
 \underline{Navigation --- Find user in mall} \\ The product shall have a function for locating the user in the shopping mall. This function will help the user to know what floor he or she is on, and where on that floor the user is currently located. \\ \par
 
- \underline{Navigation --- Find location 2} \\ The product shall have a function for directing the user to a specific location in the mall. \\ \par
+ \underline{Navigation --- Find location 2} \\ The product shall have a function for directing the user to a specific location in the mall.
  
  
  
 \subsubsection*{Offers}
  
-\underline{Offer --- Location offers} \\ The product shall display a new offer if the user is within 10 meters to a store. Offers shall be relevant to the user?s location in the mall. \\ \par
+\underline{Offer --- Location offers} \\ The product shall display a new offer if the user is within 10 meters to a store. Offers shall be relevant to the users location in the mall. \\ \par
  
 \underline{Offer --- Display specific offers} \\ The product shall display specific offers designed by the stores if the user enters their stores. \\ \par
  
-\underline{Offer --- Limit of displaying offers} \\ The product may show a new offer every z seconds. \\ \par
-
-
+\underline{Offer --- Limit of displaying offers} \\ The product may show a new offer every 120 seconds.
 
 \subsubsection*{Parking}
  
- \underline{Parking --- Register parked car 2} \\ The product shall provide a function to register where the user's vehicle is parked. \\ \par
+ \underline{Parking --- Register parked car 2} \\ The product shall provide a function to register where the users vehicle is parked. \\ \par
  
- \underline{Parking --- Guide to parked car 2} \\ The product shall provide a function to locate the user?s parked vehicle. \\ \par
+ \underline{Parking --- Guide to parked car 2} \\ The product shall provide a function to locate the users parked vehicle. \\ \par
  
- \underline{Parking --- Find free parking place} \\ The product shall have the function for displaying what parking places are free and assist the user to locate the free parking places. \\ \par
+ \underline{Parking --- Find free parking place} \\ The product shall have the function for displaying what parking places are free and assist the user to locate the free parking places.
  
- 
- 
+
  \subsubsection*{Quality Requirements}
  
  
@@ -238,19 +234,17 @@ type and display what store has that type of store-product so the user can selec
  
  \underline{Misc --- Server up-time} \\ The server shall have at least 99 \% up-time over a year of runtime. \\ \par
  
-  \underline{Misc --- Accuracy locate car} \\ The product shall locate the user?s parked car with an accuracy of at least 5m. When the user uses the function ?navigate to parked car?. \\ \par
+  \underline{Misc --- Accuracy locate car} \\ The product shall locate the users parked car with an accuracy of at least 5m. When the user uses the function "navigate to parked car". \\ \par
   
-  \underline{Misc --- Locate user speed }\\ The product shall locate the user?s location with in 3 seconds after staring the application 90 \% of the time.
-
+  \underline{Misc --- Locate user speed }\\ The product shall locate the users location with in 3 seconds after staring the application 90 \% of the time.
 
 
 %==================================
 % Requirements on Design Level. 
 \subsection*{Design Level}
 
- \subsubsection*{Quality Requirements}
  
- \underline{GUI --- Navigation screen} \\ The product shall provide the screen shown in figure \ref{fig:nav} to help the user navigate.
+ \underline{GUI --- Navigation screen} \\ The product shall provide the screen shown in figure \ref{fig:nav} to help the user navigate.\\ \par
 
  \underline{Data --- General store information} \\ The product shall have a database to store general information about the stores. \\ \par
  
@@ -262,23 +256,66 @@ type and display what store has that type of store-product so the user can selec
   \underline{Misc --- Fast server connection} \\ The product shall connect to the server with in 5 seconds after starting the product  95 \% of 
   the time, so the server and the user device is updated with the latest offers and potential new stores. This shall not hinder the application from working. 
   This shall be done in the background. \\ \par
+  
+   \underline{Smart-Watch --- Screen appearance} \\ The Smart-Watch screen appearance shall look as in figure \ref{fig:smartwatch}.
+   
+\subsubsection*{Offers}
+ 
+\underline{GUI --- Non covering offers} \\ The product shall display offers from stores without covering the user device screen.
  
  \newpage
  \section*{Appendix A} \label{app:appA}
- \textbf{/* Insert text about appendix A.*/}
+Appendix A holds the figures referred to in the requirements.
+ 
+ 
+ \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../images/erdiags.png}
+    \caption{Refers to the requirement "Data --- Attributes".}
+    \label{fig:er}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../images/vw_user.png}
+    \caption{Refers to the requirement "Data --- Attributes."}
+    \label{fig:user}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../images/vw_store.png}
+    \caption{Refers to the requirement "Data --- Registration."}
+    \label{fig:store}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.35\textwidth]{../images/vw_product.png}
+    \caption{Refers to the requirement "Data --- Registration."}
+    \label{fig:product}
+\end{figure}
  
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.2\textwidth]{../images/nav.png}
-    \caption{A context diagram describing the domain level of ShopMate. }
+    \includegraphics[width=0.3\textwidth]{../images/nav.png}
+    \caption{Refers to the requirement "GUI --- Navigation screen".}
     \label{fig:nav}
 \end{figure}
 
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.2\textwidth]{../images/offer.png}
-    \caption{A context diagram describing the domain level of ShopMate. }
+    \includegraphics[width=0.3\textwidth]{../images/offer.png}
+    \caption{Refers to the requirement "Offer --- Non-annoying commercials".}
     \label{fig:offer}
+\end{figure}
+
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../images/smartwatches.png}
+    \caption{Refers to the requirement "Smart-Watch --- Screen appearance".}
+    \label{fig:smartwatch}
 \end{figure}
 
 \end{document}
