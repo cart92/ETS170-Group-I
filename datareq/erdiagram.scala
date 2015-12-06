@@ -24,6 +24,6 @@ var m = Model(
                     Member("price"), 
                     Member("stockBalance")
             )
-        )
+        ), Image("erdiags.png")
     )
 )
