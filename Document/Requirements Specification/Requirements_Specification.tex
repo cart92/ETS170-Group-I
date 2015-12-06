@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage[english]{babel}
 \usepackage{enumitem}%can be used for automatic numbering of requirements.
+\usepackage{paralist}
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
@@ -19,6 +20,7 @@
 % Begin document.
 \begin{document}
 
+\setlength{\parindent}{0em}
 %==================================
 % Försättsblad. 
 \begin{titlepage}
@@ -37,10 +39,8 @@
 \end{minipage}\\[3cm]
 
 	\centering
-	%{\scshape\LARGE Lunds University \par}
+	{\scshape\LARGE ShopMate \par}
 	\vspace{0.5cm}
-	%{\scshape\Large Requirements Engineering\par}
-	\vspace{1.5cm}
 	\rule{1\textwidth}{.6pt} \par
 	{\huge\bfseries Requirements Specification\par}
 	\rule{1\textwidth}{.6pt} \par
@@ -51,7 +51,7 @@
 % The authors down to the left. 
 \vfill
 \begin{flushleft}
-	\textit{Authors of this document:}\\
+	\textit{By Group I:}\\
 	Daniel Dornl\"{o}v\par 
 	David Cartbo\par
 	Jonathan Lundholm\par 
@@ -74,116 +74,79 @@
     \hline
     \textbf{Version}	& \textbf{Date}		& \textbf{Description}			\\ \hline
     0.1			& 2015-11-22 			& First release			\\ \hline
-   % 0.2			& 2nd deadline			& Fix/new release 			\\ \hline
+   	0.2			& 2015-12-7			& Release 2 			\\ \hline
     \end{tabular}
 \end{center}
 
 %==================================
-% Buisness Goals
-\section{Buisness Goals}
-The application that is to be developed is supposed to increase the shopping malls customer satisfaction, the number of visiting customer and increase the number of sales the stores in the mall has.\\\\
+% Introduction
+\section*{Introduction}
 
 
 %==================================
-% Definitions.
+% Business Goals
+\subsection*{Business Goals}
 
-\section{Terminology}
+%==================================
+% Business Goals
+
+\subsection*{Terminology}
 	\begin{description}
+	\setlength{\itemsep}{0pt}
 	\item[The app] is referring to the ordered application for a shopping mall, i.e. the ordered product.
 	\item[The user] is referring to the person using the application on their device.
 	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and smart-watch.
+	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the user's screen of their devices.
+	\item [The server/database] is where all data about stores, offers, store-products, maps and so on are stored.
+	\item [Store] refers to companies located in the mall. 
+	\item [Store-Product] refers to items/products being sold in the stores, not the product that is being developed.
+	\item [Location] refers to the location of a user or a store in the shopping mall. 
+	\item [Shopping list] refers to a list with items or store-products that the user has added to a list and intends to buy while at the mall.
 \end{description}
 
+\subsection{Context Diagram}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../images/Context_Diagram.png}
+    \caption{An activity diagram showing how the client process an incoming image.}
+    \label{fig:image}
+\end{figure}
 
 %==================================
 % This is where the requirements start.
 %==================================
 
-
 %==================================
-% Data requirements.
+% Goal Level. 
+\section*{Goal Level}
 
-\section{Data Requirements}
-This is where we specify the data requirements.
+\textbf{Business --- REQ} \\ Enter description. \\
 
-\subsection{Database}
+\underline{Business --- REQ} \\ Enter description. \\
 
-\begin{reqsublist}
-	\item The app shall support registration of store offers from different stores.
-	\item The database shall contain the products sold in the shopping mall, and provide information which store that sells them.
-	\item The app shall have data provided by the stores on stock balance, prices and offers on the products offered by the stores.
-	\item The app shall have a database to store general information about the stores. 
-\end{reqsublist}
+\underline{ \textbf{Business --- REQ}} \\ Enter description. \\
 
+\underline{ \textbf{Business --- REQ}} \\ Enter description. \\
+
+\underline{ \textbf{Business --- REQ}} \\ Enter description. \\
 %==================================
-% Functional requirements.
+% Requirements on Domain Level. 
+\section*{Domain Level}
 
-\section{Functional Requirements}
-Here we list the function requirements. 
+\underline{ \textbf{Data--- REQ}} \\ Enter description. \\
 
-\subsection{Navigation}
-\begin{reqsublist}
-	\item The app shall have a function for locating the user in the shopping mall.
-	\item The app shall be able to assist the user to get from point a to point b in the shopping mall.
-	\item The app shall provide public information, such as location of handicap toilets, elevators, ATM machines, etc.
-	\item The app shall work without being connected to the internet, to limit data traffic.
-\end{reqsublist}
+\underline{ \textbf{Data--- REQ}} \\ Enter description. \\
 
-\subsection{Smart-Watch}
-\begin{reqsublist}
-	\item The app shall support connecting a smart-watch to it.
-	\item The app shall support navigation on the smart-watch screen.
-	\item The app shall support helping the user find where they parked their car.
-	\item The app shall support store offers in a smart-watch.
-	\item The app shall work without a smart-watch. (Not all customers have a smart-watch)
-\end{reqsublist}
-
-\subsection{Offers}
-\begin{reqsublist}
-	\item The app shall display offers from stores close to the user without covering the user device screen.
-	\item The app shall display a new offer if the user is within x range to a store and has not been shown another offer in y time.
-	\item The app shall display specific offers designed by the stores if the user enters their stores.
-	\item The app may not show a new offer more than every z seconds/minutes.
-\end{reqsublist}
+\underline{ \textbf{Navigation--- REQ}} \\ Enter description. \\
 
 \subsection{Parking}
-\begin{reqsublist}
-	\item The app shall provide a function to register where the user's vehicle is parked. 
-	\item The user shall be able to register the location of the parked vehicle.
-	\item The app shall be able to guide the user to their parked vehicle.
-	\item The app shall have the function for displaying what parking places are free and assist the user to locate the free parking places.
-\end{reqsublist}
+%==================================
+% Requirements on Product Level. 
+\section*{Goal Level}
 
-\subsection{Additional Functionality}
-\begin{reqsublist}
-	\item The app shall support information about departures using public transportation.
-	\item The user shall be able to create a shopping list. The products shall be searched for by type and display what store has that type of product so the user can select what store and product he or she wants to add to the shopping list.
-	\item The app shall have a rating system for stores in the mall that user can use to rate stores.
-	\item The app shall be implemented for Android devices and iOS devices.
-\end{reqsublist}
 
 %==================================
-% Design requirements.
-
-\section{Design Requirements}
-Here we list the design requirements, regarding the graphical user interface. 
-
-\begin{reqlist}
-	\item The app shall provide the screen shown in figure xx to help the user navigate.
-\end{reqlist}
-
-%==================================
-% Quality requirements.
-
-\section{Quality Requirements}
-Here we list the quality requirements.
-
-\begin{reqlist}
-	\item The app should be easy to understand and not confusing.
-	\item The app shall not be annoying to use or clutter the screen with offers.
-	\item The app shall connect to the server with in 5 seconds after starting the app so the user does not have to wait too long before the app is synced with the server.
-	\item The server shall have at least 99\% up-time.
-
-\end{reqlist}
+% Requirements on Design Level. 
+\section*{Design Level}
 
 \end{document}
