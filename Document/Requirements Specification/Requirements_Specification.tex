@@ -18,7 +18,8 @@
 
 %==================================
 % Macros.
-\newcommand{\balls}{\textquotesingle}
+\newcommand{\qu}{\textquotesingle}
+\newcommand{\danne}{\"{o}}
 
 \makeatletter
 \newcommand{\setword}[2]{%
@@ -80,7 +81,7 @@ v \ref{ver:latest}
 \vfill
 \begin{flushleft}
 	\textit{By Group I:}\\
-	Daniel Dornl\"{o}v\par 
+	Daniel Dornl\danne v\par 
 	David Cartbo\par
 	Jonathan Lundholm\par 
 	Kristoffer Hilmersson\par
@@ -98,7 +99,7 @@ v \ref{ver:latest}
 % Introduction
 \section{Introduction}
 This document describes the requirements for an iOS and Android based application that 
-communicates with a server and Smart-Watches. The product aims to assist the user in navigating the mall and to the users parked car, 
+communicates with a server and Smart-watches. The product aims to assist the user in navigating the mall and to the users parked car, 
 get an overview of the layout of the mall, keep track of what errands the user has in the mall and display offers from stores in the mall. 
 
 %==================================
@@ -112,10 +113,13 @@ number of sales for the stores. This will enable the mall owner to charge the st
 \subsection{Terminology}
 	\begin{description}
 	\setlength{\itemsep}{0pt}
-	\item[The application] is referring to the ordered application for a shopping mall, i.e. the ordered product.
+	\item [The product] is referring to the ordered system. The product consists of an application for the operating systems; Android and iOS. 
+	In addition to the application there shall be support for a Smart-watch and a server/database to store information in.
+	\item [Smartphone] is a mobile phone with internet connection, touch screen and possibility to install applications from Google play store or App store depending if the Smartphone runs Android or iOS as operating system.
+	\item [Smart-watch] is an iOS- or Android-wearable, in other words it\qu s a connected device that communicates with a Smartphone and can run lightweight applications.
 	\item[The user] is referring to the person using the application on their device.
-	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and smart-watch.
-	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the users screen of their devices.
+	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and Smart-watch.
+	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the user\qu s screen of their devices.
 	\item [The server/database] is where all data about stores, offers, store-products, maps and so on are stored.
 	\item [Store] refers to companies located in the mall. 
 	\item [Store-product] refers to items/products being sold in the stores, not the product that is being developed.
@@ -123,6 +127,10 @@ number of sales for the stores. This will enable the mall owner to charge the st
 	\item [Shopping list] refers to a list with items or store-products that the user has added to a list and intends to buy while at the mall.
 \end{description}
 
+The requirement ID\qu s are meant to help the reader to know what section of the report they address. 
+They also increase awareness in the project and can be used to not have to state the whole requirement every time they are mentioned. \\ \par
+
+The requirement ID\qu s are formatted after which category they are active within, and complemented with a few words describing what function they fulfill. For example a business requirement starts with "Business" followed by their function, e.g. "Customer satisfaction". Which will give the following requirement ID: \textit{Business --- Customer satisfaction.} The same technique is used for all the other areas of the report as well. 
 
 %==================================
 % This is where the requirements start.
@@ -160,7 +168,7 @@ this is necessary. Figure \ref{fig:contextdiagram} below represents the domain l
 
 We are only implementing the ShopMate application, and thus only communicating with the other (already existing) systems interfaces 
 (Parking System, Navigation System, Public Transportation, database). A minimalistic version of the product is also to be implemented on 
-Smart-Watches, where only the essential parts of the application is used. For more information about what functionality exists on what 
+Smart-watches, where only the essential parts of the application is used. For more information about what functionality exists on what 
 device and what functionality is limited by not having internet connection see table 1 and 2 in the appendix on page \pageref{app:A}. 
 The following states the overall requirement defined by the context diagram. \\ \par
 
@@ -175,10 +183,9 @@ The following states the overall requirement defined by the context diagram. \\ 
     \label{fig:contextdiagram}
 \end{figure}
 
-The Location System is used to locate where the user is in the mall to make navigation possible. Mall Data System is a database that 
-contains all the necessary data concerning the stores, products, offers, prices and stock balance. Public Transport is the system used 
-by the public transport provider, and provides the timetables for the ShopMate to give advice concerning public transportation to the mall. 
-Parking System is the external system used by ShopMate to find parking spots and finding parked vehicles.
+The Location System is used to locate where the user is in the mall to make navigation possible. Mall Data System is a database that contains all the necessary 
+data concerning the stores, products, offers, prices and stock balance. Public Transport refers to the system used to be able to provide the users with timetables 
+of the local public transport. Parking System is the external system used by ShopMate to find parking spots and finding parked vehicles.
 
 %==================================
 % Navigation
@@ -288,7 +295,7 @@ is in the corridor. If the user is in a store only that store can display an off
 \underline{Offer --- Scenario} \\ The app shall support the following scenario: \\ \par
 
 \textit{
-"Jonathan is walking around in the mall with the mall\balls s new application ShopMate installed on his Android phone. He walks past a few stores in the mall 
+"Jonathan is walking around in the mall with the mall\qu s new application ShopMate installed on his Android phone. He walks past a few stores in the mall 
 when he gets a couple of offers from the different stores. Jonathan enters a store he is interested in, and receives an offer specific to that store."
 } \\ \par
 
@@ -297,15 +304,11 @@ when he gets a couple of offers from the different stores. Jonathan enters a sto
 
 \underline{Offer --- Receive radius} \\ The product shall display a new offer if the user is within 10 meters to a store.\\ \par
 
-\underline{Offer --- Location offers} \\ The offers shall be relevant to the user\balls s location in the mall.\\ \par
+\underline{Offer --- Location offers} \\ The offers shall be relevant to the user\qu s location in the mall.\\ \par
  
 \underline{Offer --- Current store} \\ The product shall only display specific offers from the store that the user is currently located in. \\ \par
  
 \underline{Offer --- Limit of displaying offers} \\ The product may show a new offer every 120 seconds.
-
- %\underline{Offer --- Non-annoying commercials} \\ The product shall not be annoying to use or clutter the screen with 
-% offers. In other words offers that are displayed on the screen shall not cover the 
- %whole screen they could look like displayed in figure \ref{fig:offer}.  
 
 %==================================
 % Parking
@@ -315,7 +318,7 @@ The mall has a great parking lot, and these requirements is stated to aid the us
 when they decide to take their cars to the mall. The two big concerns when it comes 
 to parking is the ability to find a free space and later remembering where you parked 
 after hours of intense shopping. If these requirements are correctly implemented the users of 
-the product shouldn\balls t have to experience these concerns. \\ \par
+the product shouldn\qu t have to experience these concerns. \\ \par
 
 \underline{Parking --- Scenario} \\ The app shall support the following scenario: \\ \par
 
@@ -341,42 +344,42 @@ Our customer only wants information about how to get to the mall, not how to get
 home that is an other products concern. \\ \par
 
 \underline{Transportation--- Public transport} \\ The product shall support information about 
-departures from the user\balls s current location to the mall, using public transportation.
+departures from the user\qu s current location to the mall, using public transportation.
 
 %==================================
-% Smart-Watch
+% Smart-watch
 
-\section{Smart-Watch}
-Below we list requirements that cover the Smart-Watch part of the product. The functionality 
-that shall be supported by the Smart-Watch is not the whole functionality of the product. The 
+\section{Smart-watch}
+Below we list requirements that cover the Smart-watch part of the product. The functionality 
+that shall be supported by the Smart-watch is not the whole functionality of the product. The 
 Smart-watch shall support the following features:
 
 \begin{itemize}
 	\item Navigation to any position in the mall including parked car.
-	\item Display offersl
+	\item Display offers.
 	\item Display the customer's shopping list.
 \end{itemize} 
 
-\underline{Smart-watch --- General} \\ The product shall support connecting a smart-watch to it. 
+\underline{Smart-watch --- General} \\ The product shall support connecting a Smart-watch to it. 
 To help the user navigate and get offers from stores without having to interact with their Smartphone. \\ \par 
 
-\underline{Smart-watch --- Navigation} \\ The product shall support navigation on the Smart-Watch screen. \\ \par 
+\underline{Smart-watch --- Navigation} \\ The product shall support navigation on the Smart-watch screen. \\ \par 
 
 \underline{Smart-watch --- Guide to parked car} \\ The product shall support helping the user find where they parked their car. \\ \par 
 
-\underline{Smart-watch --- Offers} \\ The product shall support the functionality to display offers in a Smart-Watch. \\ \par 
+\underline{Smart-watch --- Offers} \\ The product shall support the functionality to display offers in a Smart-watch. \\ \par 
 
-\underline{Smart-watch --- Shopping list} \\ The product shall be able to display the user\balls s shopping-list on the Smart-Watch. \\ \par 
+\underline{Smart-watch --- Shopping list} \\ The product shall be able to display the user\qu s shopping-list on the Smart-watch. \\ \par 
 
-\underline{Smart-watch --- Not required} \\ The product shall work without a Smart-Watch. 
-Not all customers have Smart-Watches and it can therefore not be a requirement to use the product with one. \\ \par
+\underline{Smart-watch --- Not required} \\ The product shall work without a Smart-watch. 
+Not all customers have Smart-watches and it can therefore not be a requirement to use the product with one. \\ \par
 
-\underline{Smart-Watch --- Screen appearance} \\ The Smart-watch screen appearance shall look as in figure \ref{fig:smartwatch}. 
+\underline{Smart-watch --- Screen appearance} \\ The Smart-watch screen appearance shall look as in figure \ref{fig:smartwatch}. 
 
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{../images/smartwatches.png}
-    \caption{Refers to the requirement \textit{Smart-Watch --- Screen appearance.}}
+    \caption{Refers to the requirement \textit{Smart-watch --- Screen appearance.}}
     \label{fig:smartwatch}
 \end{figure}
 
@@ -415,6 +418,24 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
     \caption{Refers to the requirement \textit{GUI --- Display offers.}}
     \label{fig:displayoffer}
 \end{figure}
+
+\underline{GUI --- Register parking spot} \\  The user shall be able register their parked vehicle as shown in figure \ref{fig:saveparking}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../images/saveparking.png}
+    \caption{Refers to the requirement \textit{GUI --- Register parking spot.}}
+    \label{fig:saveparking}
+\end{figure}
+
+\underline{GUI --- Navigation to parked vehicle} \\ The product shall be able to navigate a user to their parked vehicle as shown in figure \ref{fig:nav2car}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../images/nav2car.png}
+    \caption{Refers to the requirement \textit{GUI --- Display offers.}}
+    \label{fig:nav2car}
+\end{figure}
  
  %==================================
 % Miscellaneous
@@ -429,7 +450,7 @@ in the mall and navigate to their parked car using only GPS or any other trackin
 
 \underline{Misc --- Create shopping list} \\ The user shall be able to create a shopping list in their smartphone. \\ \par 
 
-\underline{Misc --- Search by type} \\ The store products shall be searched by type in the user?s smartphone. \\ \par
+\underline{Misc --- Search by type} \\ The store products shall be searched by type in the user\qu s smartphone. \\ \par
 
 \underline{Misc --- Store-product info}\\ Searched store-products shall display information about what store has that store-product. \\ \par
 
@@ -445,7 +466,7 @@ in the mall and navigate to their parked car using only GPS or any other trackin
  
  \underline{Misc --- Server up-time} \\ The server shall have at least 99 \% up-time over a year of runtime. \\ \par
  
-  \underline{Misc --- Accuracy locate car} \\ The product shall locate the users parked car with an accuracy of at least 5 m. When the user uses the function "navigate to parked car". \\ \par
+  \underline{Misc --- Accuracy locate car} \\ The product shall locate the user\qu s parked car with an accuracy of at least 5 m. When the user uses the function "navigate to parked car". \\ \par
   
   \underline{Misc --- Locate user speed }\\ The product shall locate the users location with in 3 seconds after staring the application 90 \% of the time. \\ \par
   
@@ -463,7 +484,7 @@ in the mall and navigate to their parked car using only GPS or any other trackin
 %===========================
 % Tables 
  \subsection*{Tables} \addcontentsline{toc}{section}{\protect\numberline{}Tables}
-The tables below show which features that are present, depending on what state the user\balls s device have. 
+The tables below show which features that are present, depending on what state the user\qu s device have. 
 
  \begin{table}[h]
 \centering
@@ -472,8 +493,8 @@ The tables below show which features that are present, depending on what state t
 \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
                                                                     & \textbf{Feature} & Navigate & Departures to mall & Register parked car & Rate stores & Display offers & Search for store-products \\ \hline
 \textbf{Device/state}                                               &                  &          &                    &                     &             &                &                           \\ \hline
-\begin{tabular}[c]{@{}c@{}}Smart-Watch \\ connected\end{tabular}    &                  & x        &                    &                     &             & x              &                           \\ \hline
-\begin{tabular}[c]{@{}c@{}}Smart-Watch\\ no connection\end{tabular} &                  & x        &                    &                     &             &                &                           \\ \hline
+\begin{tabular}[c]{@{}c@{}}Smart-watch \\ connected\end{tabular}    &                  & x        &                    &                     &             & x              &                           \\ \hline
+\begin{tabular}[c]{@{}c@{}}Smart-watch\\ no connection\end{tabular} &                  & x        &                    &                     &             &                &                           \\ \hline
 \begin{tabular}[c]{@{}c@{}}Smartphone\\ connection\end{tabular}     &                  & x        & x                  & x                   & x           & x              & x                         \\ \hline
 \begin{tabular}[c]{@{}c@{}}Smartphone\\ no connection\end{tabular}  &                  & x        &                    & x                   &             &                &                        \\  \hline
 \end{tabular}
@@ -489,8 +510,8 @@ The tables below show which features that are present, depending on what state t
 \begin{tabular}{|c|c|c|c|c|c|c|} \hline
                                                                     & \textbf{Feature} & Search for products & Info about products & View shopping list & Create shopping list & Info about stores \\ \hline
 \textbf{Device/state}                                               &                  &                     &                     &                    &                      &                   \\ \hline
-\begin{tabular}[c]{@{}c@{}}Smart-Watch \\ connected\end{tabular}    &                  &                    &                     &       x             &                      &                  \\ \hline
-\begin{tabular}[c]{@{}c@{}}Smart-Watch\\ no connection\end{tabular} &                  &                    &                     &     x               &                      &                   \\ \hline
+\begin{tabular}[c]{@{}c@{}}Smart-watch \\ connected\end{tabular}    &                  &                    &                     &       x             &                      &                  \\ \hline
+\begin{tabular}[c]{@{}c@{}}Smart-watch\\ no connection\end{tabular} &                  &                    &                     &     x               &                      &                   \\ \hline
 \begin{tabular}[c]{@{}c@{}}Smartphone\\ connection\end{tabular}     &                  & x                   & x                   & x                  & x                    & x                 \\ \hline
 \begin{tabular}[c]{@{}c@{}}Smartphone\\ no connection\end{tabular}  &                  &                    &                     & x                 &                      &                  \\ \hline
 \end{tabular}
