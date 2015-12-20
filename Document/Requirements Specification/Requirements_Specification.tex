@@ -11,6 +11,7 @@
 \usepackage{textcomp}
 \usepackage{pbox}
 \usepackage{tabto}
+\usepackage[]{hyperref}
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
@@ -18,6 +19,12 @@
 %==================================
 % Macros.
 \newcommand{\balls}{\textquotesingle}
+
+\makeatletter
+\newcommand{\setword}[2]{%
+  \phantomsection
+  #1\def\@currentlabel{\unexpanded{#1}}\label{#2}%
+}
 
 \date{} % delete this line to display the current date
 
@@ -38,7 +45,9 @@
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
-v 1.0
+
+v \ref{ver:latest}
+
 \end{flushright}
 \end{minipage}\\[3cm]
 
@@ -62,7 +71,7 @@ v 1.0
     \textbf{Version}	& \textbf{Date}		& \textbf{Description}			\\ \hline
       0.1			& 2015-11-22 			& Release 1			\\ \hline
    	0.2			& 2015-12-7			& Release 2 			\\ \hline
-	1.0			& 2015-12-20			& Release 3 			\\ \hline
+	\setword{1.0}{ver:latest}			& 2015-12-20			& Release 3 			\\ \hline
     \end{tabular}
 \end{center}
 
@@ -200,11 +209,22 @@ location by the user in the mall. e.g. a store, toilet, elevator and so on. \\ \
 \underline{Navigation --- Public information} \\ The product shall provide public information, such as location of handicap toilets, 
 elevators, ATM machines, etc. With this information the user shall be able to navigate to the correct position in the mall. \\ \par
 
- \underline{Navigation --- Precision of positioning} \\ The product positioning shall have a resolution no greater than 5 m. \\ \par
-
  \underline{Navigation --- Find store} \\ The product shall assist the user to navigate to a store in the mall. \\ \par
  
-  \underline{Navigation --- Find public info} \\ The product shall assist the user to navigate to public information as listed above.
+  \underline{Navigation --- Find public info} \\ The product shall assist the user to navigate to public information as listed above. \\ \par
+
+ \underline{Navigation --- Precision of positioning} \\ The product positioning shall have a resolution no greater than 5 m. \\ \par
+
+ \underline{Navigation --- Locate speed} \\ The product shall locate the user within 5 seconds after starting the app 90 \% of the time. 
+ 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../images/navquper.png}
+    \caption{\textit{Navigation --- Locate speed} was elicitied using the QUPER shown in the figure.}
+    \label{fig:navquper}
+\end{figure}
+
+ \underline{Navigation --- API} \\ The product shall use Google API for locating the user. 
 
 %==================================
 % Data
@@ -281,18 +301,11 @@ when he gets a couple of offers from the different stores. Jonathan enters a sto
  
 \underline{Offer --- Current store} \\ The product shall only display specific offers from the store that the user is currently located in. \\ \par
  
-\underline{Offer --- Limit of displaying offers} \\ The product may show a new offer every 120 seconds. \\ \par
+\underline{Offer --- Limit of displaying offers} \\ The product may show a new offer every 120 seconds.
 
- \underline{Offer --- Non-annoying commercials} \\ The product shall not be annoying to use or clutter the screen with 
- offers. In other words offers that are displayed on the screen shall not cover the 
- whole screen they could look like displayed in figure \ref{fig:offer}.  
- 
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{../images/offer.png}
-    \caption{Refers to the requirement \textit{Offer --- Non-annoying commercials.}}
-    \label{fig:offer}
-\end{figure}
+ %\underline{Offer --- Non-annoying commercials} \\ The product shall not be annoying to use or clutter the screen with 
+% offers. In other words offers that are displayed on the screen shall not cover the 
+ %whole screen they could look like displayed in figure \ref{fig:offer}.  
 
 %==================================
 % Parking
@@ -367,6 +380,7 @@ Not all customers have Smart-Watches and it can therefore not be a requirement t
     \label{fig:smartwatch}
 \end{figure}
 
+\newpage
 %==================================
 % GUI
 \section{Graphical User Interface}
@@ -377,14 +391,30 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
  
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.2\textwidth]{../images/nav.png}
+    \includegraphics[width=0.3\textwidth]{../images/nav.png}
     \caption{Refers to the requirement \textit{GUI --- Navigation screen.}}
     \label{fig:nav}
 \end{figure}
 
  \underline{GUI --- Understandable interface} \\ The product shall be easy to understand, a novice user shall be able to navigate the interface after the first time the product has been used. \\ \par
 
-\underline{GUI --- Non covering offers} \\ The product shall display offers from stores without covering the user device screen.
+\underline{GUI --- Non-covering offers} \\ The product shall show offers from stores without covering the user device screen as seen in figure \ref{fig:noncoveroffer}. \\ \par 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../images/noncoveroffer.png}
+    \caption{Refers to the requirement \textit{GUI --- Non-covering offers}.}
+    \label{fig:noncoveroffer}
+\end{figure}
+
+\underline{GUI --- Display offers} \\ The product shall be able to enlarge appearing offers and display it as seen in figure \ref{fig:displayoffer}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../images/offer.png}
+    \caption{Refers to the requirement \textit{GUI --- Display offers.}}
+    \label{fig:displayoffer}
+\end{figure}
  
  %==================================
 % Miscellaneous
@@ -422,6 +452,10 @@ in the mall and navigate to their parked car using only GPS or any other trackin
    \underline{Misc --- Fast server connection} \\ The product shall connect to the server with in 5 seconds after starting the product  95 \% of the time, 
    so the server and the user device is updated with the latest offers and potential new stores. This shall not hinder the application from working. This shall be done in the background.
 
+
+%===========================
+% Appendix
+\newpage
 \section*{Appendix} \label{app:A} \addcontentsline{toc}{section}{\protect\numberline{}Appendix}
 
  The appendix contain additional material for this release. 
