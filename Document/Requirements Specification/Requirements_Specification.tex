@@ -12,6 +12,7 @@
 \usepackage{pbox}
 \usepackage{tabto}
 \usepackage[]{hyperref}
+\usepackage{pdfpages}
 
 \newlength{\testlabellength}
 \settowidth{\testlabellength}{Test 100.10.10}
@@ -98,9 +99,10 @@ v \ref{ver:latest}
 %==================================
 % Introduction
 \section{Introduction}
-This document describes the requirements for an iOS and Android based application that 
-communicates with a server and Smart-watches. The product aims to assist the user in navigating the mall and to the users parked car, 
-get an overview of the layout of the mall, keep track of what errands the user has in the mall and display offers from stores in the mall. 
+Our customer is planning to open a brand new shopping mall and would like to stand out from their competitors. In order to do this and at the same time 
+increase customer value, they have asked us to develop an application called ShopMate for the mall. The product ShopMate will help the customers of the 
+mall, e.g. creating a shopping list, receiving special offers and finding their way around the mall. The shop owners are hoping the product will increase sales 
+and attract new customers to the mall. They will also be able to promote their individual stores through the application.
 
 %==================================
 % Business Goals
@@ -118,7 +120,7 @@ number of sales for the stores. This will enable the mall owner to charge the st
 	\item [Smartphone] is a mobile phone with internet connection, touch screen and possibility to install applications from Google play store or App store depending if the Smartphone runs Android or iOS as operating system.
 	\item [Smart-watch] is an iOS- or Android-wearable, in other words it\qu s a connected device that communicates with a Smartphone and can run lightweight applications.
 	\item[The user] is referring to the person using the application on their device.
-	\item[Device] is referring to the unit the user is running the app on, e.g. mobile phone and Smart-watch.
+	\item[Device] is referring to the unit the user is running the app on, e.g. Smartphone and Smart-watch.
 	\item [Offers] are store-products or services that are being sold att a lower price in the stores a the mall. Offers are displayed on the user\qu s screen of their devices.
 	\item [The server/database] is where all data about stores, offers, store-products, maps and so on are stored.
 	\item [Store] refers to companies located in the mall. 
@@ -130,7 +132,7 @@ number of sales for the stores. This will enable the mall owner to charge the st
 The requirement ID\qu s are meant to help the reader to know what section of the report they address. 
 They also increase awareness in the project and can be used to not have to state the whole requirement every time they are mentioned. \\ \par
 
-The requirement ID\qu s are formatted after which category they are active within, and complemented with a few words describing what function they fulfill. For example a business requirement starts with "Business" followed by their function, e.g. "Customer satisfaction". Which will give the following requirement ID: \textit{Business --- Customer satisfaction.} The same technique is used for all the other areas of the report as well. 
+The requirement ID\qu s are formatted after which category they are active within, and complemented with a few words describing what function they fulfill. For example a business requirement starts with "Business" followed by their function, e.g. "Customer satisfaction". Which will give the following requirement ID: \textit{Business --- Customer satisfaction.} The same technique is used for all the other areas of the requirement specification as well. 
 
 %==================================
 % This is where the requirements start.
@@ -159,9 +161,6 @@ This is how our customer will be able to profit from the product. \\ \par
 
 \section{Domain Overview}
 
-ShopMate has an excessive inner domain, communicating with various other systems. In order to fulfill some of the fundamental requirements, 
-this is necessary. Figure  below represents the domain level of ShopMate, displaying the systems needed to provide the desired functionality.
-
 \subsection{Context Diagram}
 ShopMate has an excessive inner domain, communicating with various other systems. In order to fulfill some of the fundamental requirements, 
 this is necessary. Figure \ref{fig:contextdiagram} below represents the domain level of ShopMate, displaying the systems needed to provide the desired functionality.  \\ \par
@@ -178,7 +177,7 @@ The following states the overall requirement defined by the context diagram. \\ 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/Context_Diagram.png}
+    \includegraphics[width=0.95\textwidth]{../files/Context_Diagram.png}
     \caption{The context diagram for the ShopMate system, describing its domain level.}
     \label{fig:contextdiagram}
 \end{figure}
@@ -197,41 +196,44 @@ resources in the product which could mean the GPS or maps.  \\ \par
  \underline{Navigation --- Scenario} \\ 
  The app shall support the following scenario: \\ \par
  
- \textit{"Jonathan is moody, and decide to go to his local shopping mall to try out their new app: 
- ShopMate. He has a good idea of what he wants, 
- so he creates a shopping list of the products that he wants. 
- Now, Jonathan wants to follow the resulting route generated  by ShopMate. 
- Halfway to the first store, he needs to go to the bathroom and 
- wants to use the public information provided by the app. Based 
- on his current position, ShopMate displays the nearest restroom."} \\ \par
-
-\underline{Navigation --- Find user in mall} \\ The product shall have a function for locating the user in the shopping mall. This function 
-will help the user to know what floor he or she is on, and where on that floor the user is currently located. See figure \ref{fig:nav} for more information. \\ \par
-
-\underline{Navigation --- Find location 1} \\ The product shall be able to assist the user to get from its current location to a specified 
-location by the user in the mall. e.g. a store, toilet, elevator and so on. \\ \par
-
- \underline{Navigation --- Find location 2} \\ The product shall have a function for directing the user to a specific location in the mall. \\ \par
-
-\underline{Navigation --- Public information} \\ The product shall provide public information, such as location of handicap toilets, 
-elevators, ATM machines, etc. With this information the user shall be able to navigate to the correct position in the mall. \\ \par
+ \textit{"Jonathan decides to go to his local shopping mall to try out their new app: ShopMate. He has a good idea of what he wants, 
+ so he creates a shopping list of the products that he wants. Now, Jonathan wants to follow the resulting route generated  by ShopMate. 
+ Halfway to the first store, he needs to go to the bathroom and wants to use the public information provided by the app. Based on his current position, ShopMate displays the nearest restroom."} \\ \par
 
  \underline{Navigation --- Find store} \\ The product shall assist the user to navigate to a store in the mall. \\ \par
  
   \underline{Navigation --- Find public info} \\ The product shall assist the user to navigate to public information as listed above. \\ \par
 
- \underline{Navigation --- Precision of positioning} \\ The product positioning shall have a resolution no greater than 5 m. \\ \par
+\underline{Navigation --- Find location} \\ The product shall be able to assist the user to get from its current location to a specified 
+location by the user in the mall. e.g. a store, toilet, elevator and so on. \\ \par
+
+ \underline{Navigation --- Guide to specific location} \\ The product shall have a function for directing the user to a specific location in the mall. \\ \par
+
+\underline{Navigation --- Public information} \\ The product shall provide public information, such as location of handicap toilets, 
+elevators, ATM machines, etc. With this information the user shall be able to navigate to the correct position in the mall. \\ \par
+
+ \underline{Navigation --- Precision of positioning} \\ The product positioning shall have a resolution no greater than 5 m. 
+ 
+   \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../files/parkingquper.png}
+    \caption{\textit{Navigation --- Precision of positioning} was elicitied using the QUPER shown in the figure.}
+    \label{fig:parkquper}
+\end{figure}
 
  \underline{Navigation --- Locate speed} \\ The product shall locate the user within 5 seconds after starting the app 90 \% of the time. 
  
  \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../images/navquper.png}
+    \includegraphics[width=0.9\textwidth]{../files/navquper.png}
     \caption{\textit{Navigation --- Locate speed} was elicitied using the QUPER shown in the figure.}
     \label{fig:navquper}
 \end{figure}
 
- \underline{Navigation --- API} \\ The product shall use Google API for locating the user. 
+ \underline{Navigation --- API} \\ The product shall use Google API for locating the user. \\ \par
+ 
+ \underline{Navigation --- Find user in mall} \\ The product shall have a function for locating the user in the shopping mall. This function 
+will help the user to know what floor he or she is on, and where on that floor the user is currently located. See figure \ref{fig:nav} for more information. \\ \par
 
 %==================================
 % Data
@@ -241,31 +243,39 @@ This section describes how data is to be stored, and how to get information
 (e.g. readable to humans) out of stored data. There are references to figures 
 that illustrate how some of the data is to be stored. \\ \par
 
- \underline{Data --- Products} \\ The database shall contain the store-products sold in the shopping mall. \\ \par
+  \underline{Data --- Store products} \\ The database shall provide information on what products stores sell. \\ \par
+  
+   \underline{Data --- Product information} \\ The product shall have data provided by the stores on stock balance, prices and offers on store-products.\\ \par
 
- \underline{Data --- Attributes} \\ The product shall store data according to figure \ref{fig:er} and figure \ref{fig:user}.  
+
+ \underline{Data --- Products} \\ The database shall contain the store-products sold in the shopping mall. \\ \par
  
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{../images/erdiag.png}
-    \caption{Refers to the requirement \textit{Data --- Attributes.}}
-    \label{fig:er}
-\end{figure}
+   \underline{Data --- General store information} \\ The product shall have a database to store general information about the stores. \\ \par
+
+ \underline{Data --- User attributes} \\ The product shall store data according to figure \ref{fig:user}.  
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{../images/vw_user.png}
-    \caption{Refers to the requirement \textit{Data --- Attributes.}}
+    \includegraphics[width=0.4\textwidth]{../files/vw_user.png}
+    \caption{Refers to the requirement \textit{Data --- User attributes.}}
     \label{fig:user}
 \end{figure}
  
- \underline{Data --- Product information} \\ The product shall have data provided by the stores on stock balance, prices and offers on store-products.\\ \par
+\underline{Data --- Data relationships} \\ The product shall store data according to figure \ref{fig:er}. 
+
+   \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../files/erdiag.png}
+    \caption{Refers to the requirement \textit{Data --- Data relationships}}
+    \label{fig:er}
+\end{figure}
+ 
  
  \underline{Data --- Store data} \\ The product shall store data according to figure \ref{fig:store}. 
  
  \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{../images/vw_store.png}
+    \includegraphics[width=0.4\textwidth]{../files/vw_store.png}
     \caption{Refers to the requirement \textit{Data --- Store data.}}
     \label{fig:store}
 \end{figure}
@@ -274,23 +284,21 @@ that illustrate how some of the data is to be stored. \\ \par
  
  \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth]{../images/vw_product.png}
+    \includegraphics[width=0.35\textwidth]{../files/vw_product.png}
     \caption{Refers to the requirement \textit{Data --- Product data.}}
     \label{fig:product}
 \end{figure}
- 
-  \underline{Data --- Store products} \\ The database shall provide information on what products stores sell. \\ \par
-
-  \underline{Data --- General store information} \\ The product shall have a database to store general information about the stores.
   
+ 
+ %==================================
+% Offers
 \section{Offer}
-Offers are a big part of the product, the requirements in this section describes how the 
+Offers are a big part of the product, and the requirements in this section describes how the 
 function shall be used to optimize the user-experience in the mall. This is done by restricting 
-how often an offer is to be showed and within which ranges stores can notify the user. 
-Figures are used in some of the requirements to illustrate how offers should present themselves in the product. \\ \par
+how often an offer is to be showed and within which ranges stores can notify the user. \\ \par
 
 The product can display offers from any store within 10 meters of the user if the user 
-is in the corridor. If the user is in a store only that store can display an offer. \\ \par
+is in the corridor. If the user is in a store, only that store can display an offer. \\ \par
 
 \underline{Offer --- Scenario} \\ The app shall support the following scenario: \\ \par
 
@@ -298,9 +306,6 @@ is in the corridor. If the user is in a store only that store can display an off
 "Jonathan is walking around in the mall with the mall\qu s new application ShopMate installed on his Android phone. He walks past a few stores in the mall 
 when he gets a couple of offers from the different stores. Jonathan enters a store he is interested in, and receives an offer specific to that store."
 } \\ \par
-
-%==================================
-% Offers
 
 \underline{Offer --- Receive radius} \\ The product shall display a new offer if the user is within 10 meters to a store.\\ \par
 
@@ -322,10 +327,9 @@ the product shouldn\qu t have to experience these concerns. \\ \par
 
 \underline{Parking --- Scenario} \\ The app shall support the following scenario: \\ \par
 
-\textit{ "Jonathan parks his newly renovated Volvo 740 in the parking lot and ShopMate saves the 
-location of where he parked. Jonathan heads to the mall to buy some make-up and comes 
-back later to the parking lot, but has forgotten where he parked his car. He uses ShopMate to 
-locate where he parked his car, which guides him to the parking spot."} \\ \par
+\textit{"Jonathan parks his newly renovated Volvo 240 in the parking lot and saves the location of where he parked. 
+Jonathan heads to the mall to buy some make-up and comes back later to the parking lot, but has forgotten where he 
+parked his car. He uses ShopMate to locate where he parked his car, which guides him to the parking spot."} \\ \par
 
 \underline{Parking --- Register parked car} \\ The user shall be able to register the location of the parked vehicle. \\ \par 
 
@@ -339,9 +343,7 @@ locate where he parked his car, which guides him to the parking spot."} \\ \par
 % Transportation
  
 \section{Transportation}
-This is the section about transportation to the mall excluding car as transportation. 
-Our customer only wants information about how to get to the mall, not how to get 
-home that is an other products concern. \\ \par
+This is the section about transportation to the mall using public transport. The product will only provide information on how to get to the mall, not how to get home. \\ \par
 
 \underline{Transportation--- Public transport} \\ The product shall support information about 
 departures from the user\qu s current location to the mall, using public transportation.
@@ -378,12 +380,11 @@ Not all customers have Smart-watches and it can therefore not be a requirement t
 
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{../images/smartwatches.png}
+    \includegraphics[width=0.5\textwidth]{../files/smartwatches.png}
     \caption{Refers to the requirement \textit{Smart-watch --- Screen appearance.}}
     \label{fig:smartwatch}
 \end{figure}
 
-\newpage
 %==================================
 % GUI
 \section{Graphical User Interface}
@@ -394,7 +395,7 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
  
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{../images/nav.png}
+    \includegraphics[width=0.3\textwidth]{../files/nav.png}
     \caption{Refers to the requirement \textit{GUI --- Navigation screen.}}
     \label{fig:nav}
 \end{figure}
@@ -405,7 +406,7 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{../images/noncoveroffer.png}
+    \includegraphics[width=0.3\textwidth]{../files/noncoveroffer.png}
     \caption{Refers to the requirement \textit{GUI --- Non-covering offers}.}
     \label{fig:noncoveroffer}
 \end{figure}
@@ -414,7 +415,7 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{../images/offer.png}
+    \includegraphics[width=0.3\textwidth]{../files/offer.png}
     \caption{Refers to the requirement \textit{GUI --- Display offers.}}
     \label{fig:displayoffer}
 \end{figure}
@@ -423,7 +424,7 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{../images/saveparking.png}
+    \includegraphics[width=0.3\textwidth]{../files/saveparking.png}
     \caption{Refers to the requirement \textit{GUI --- Register parking spot.}}
     \label{fig:saveparking}
 \end{figure}
@@ -432,7 +433,7 @@ Smartphone and a screen on the Smart-watch these requirements address both. \\ \
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{../images/nav2car.png}
+    \includegraphics[width=0.3\textwidth]{../files/nav2car.png}
     \caption{Refers to the requirement \textit{GUI --- Display offers.}}
     \label{fig:nav2car}
 \end{figure}
@@ -444,19 +445,20 @@ The requirements listed in this section have no real category. They address
 different types of features and requirements on the product. For example 
 when the product does not have internet connection the functionality of the product will be limited. \\ \par
 
+
+\underline{Misc --- Create shopping list} \\ The user shall be able to create a shopping list in their smartphone. \\ \par 
+
+\underline{Misc --- Store-product info}\\ Searched store-products shall display information about what store has that store-product. \\ \par
+
+\underline{Misc --- Search by type} \\ The store products shall be searched by type in the user\qu s smartphone. \\ \par
+
+\underline{Misc --- Filter search}\\  The product shall have a function for filtering when searching for products. \\ \par
+
 \underline{Misc --- No connection} \\ The product shall work without being connected to the 
 internet, to limit data traffic. Without internet connection the product will help the user navigate 
 in the mall and navigate to their parked car using only GPS or any other tracking service. \\ \par
 
-\underline{Misc --- Create shopping list} \\ The user shall be able to create a shopping list in their smartphone. \\ \par 
-
-\underline{Misc --- Search by type} \\ The store products shall be searched by type in the user\qu s smartphone. \\ \par
-
-\underline{Misc --- Store-product info}\\ Searched store-products shall display information about what store has that store-product. \\ \par
-
 \underline{Misc --- Select store}\\ The user shall be able to select what store and store-product he or she wants to add to the shopping list. \\ \par
-
-\underline{Misc --- Filter search}\\  The product shall have a function for filtering when searching for products. \\ \par
 
 \underline{Misc --- Rating system} \\ The product shall have a rating system for stores in the mall that users can use to rate stores. \\ \par
 
@@ -465,10 +467,6 @@ in the mall and navigate to their parked car using only GPS or any other trackin
  \underline{Misc --- Platform 2} \\ The product shall be implemented for iOS devices. \\ \par
  
  \underline{Misc --- Server up-time} \\ The server shall have at least 99 \% up-time over a year of runtime. \\ \par
- 
-  \underline{Misc --- Accuracy locate car} \\ The product shall locate the user\qu s parked car with an accuracy of at least 5 m. When the user uses the function "navigate to parked car". \\ \par
-  
-  \underline{Misc --- Locate user speed }\\ The product shall locate the users location with in 3 seconds after staring the application 90 \% of the time. \\ \par
   
    \underline{Misc --- Fast server connection} \\ The product shall connect to the server with in 5 seconds after starting the product  95 \% of the time, 
    so the server and the user device is updated with the latest offers and potential new stores. This shall not hinder the application from working. This shall be done in the background.
@@ -584,5 +582,11 @@ Misc --- Create shopping list~~~~~~~~~~~~~~~~~~~ \= \=cost: 4 \\
 Misc --- Rating system \>  \> cost: 4 \\
 Misc --- Platforms \>  \> cost: 6 
 \end{tabbing}
+
+%===========================
+% Experience report
+\newpage
+
+\includepdf[pages={-}]{../files/expreport.pdf}
 
 \end{document}
